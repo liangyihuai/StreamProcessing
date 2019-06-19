@@ -45,6 +45,9 @@ vector<Predicate*> SpecParser::parseMultiExpression(string expStr) {
 			}
 		}
 	}
+	else {
+		andPredicate = new And();
+	}
 	vector<Predicate*> vec;
 	for (Predicate* p : predicateListResult) {
 		vec.push_back(p);
