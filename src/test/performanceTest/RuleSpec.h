@@ -105,17 +105,43 @@ string cq_count_severe_threat_battleship = "IF BattleshipSevereThreat.threatLeve
 
 string cq_count_common_threat_battleshp = "IF BattleshipCommonThreat.threatLevel = common\
 \r\nFrom BattleshipCommonThreat\
+\r\nWindow length = 1000, sliding=1000, distinct=objID\
 \r\nThen BattleshipCountCommonThreat, count()";
+
+string cq_count_no_threat_battleshp = "IF BattleshipNoThreat.threatLevel = no\
+\r\nFrom BattleshipNoThreat\
+\r\nWindow length = 1000, sliding=1000, distinct=objID\
+\r\nThen BattleshipCountNoThreat, count()";
 
 string cq_count_severe_threat_aircraft = "IF AircraftSevereThreat.threatLevel = severe\
 \r\nFrom AircraftSevereThreat\
 \r\nWindow length = 1000, sliding=1000, distinct=objID\
 \r\nThen AircraftCountSevereThreat, Count()";
 
-string cq_count_common_threat_aircraft = "IF AircraftCommonThreat.threatLevel = severe\
+string cq_count_common_threat_aircraft = "IF AircraftCommonThreat.threatLevel = common\
 \r\nFrom AircraftCommonThreat\
 \r\nWindow length = 1000, sliding=1000, distinct=objID\
 \r\nThen AircraftCountCommonThreat, Count()";
+
+string cq_count_no_threat_aircraft = "IF AircraftNoThreat.threatLevel = no\
+\r\nFrom AircraftNoThreat\
+\r\nWindow length = 1000, sliding=1000, distinct=objID\
+\r\nThen AircraftCountNoThreat, Count()";
+
+string cq_count_severe_threat_Submarine = "IF SubmarineSevereThreat.threatLevel = severe\
+\r\nFrom SubmarineSevereThreat\
+\r\nWindow length = 1000, sliding=1000, distinct=objID\
+\r\nThen SubmarineCountSevereThreat, Count()";
+
+string cq_count_common_threat_Submarine = "IF SubmarineCommonThreat.threatLevel = common\
+\r\nFrom SubmarineCommonThreat\
+\r\nWindow length = 1000, sliding=1000, distinct=objID\
+\r\nThen SubmarineCountCommonThreat, Count()";
+
+string cq_count_no_threat_Submarine = "IF SubmarineNoThreat.threatLevel = no\
+\r\nFrom SubmarineNoThreat\
+\r\nWindow length = 1000, sliding=1000, distinct=objID\
+\r\nThen SubmarineCountNoThreat, Count()";
 
 //-------------------------------------------------------------
 /*Threat situation detection.*/
