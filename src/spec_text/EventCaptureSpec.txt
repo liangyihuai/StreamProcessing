@@ -1,0 +1,8 @@
+start
+
+If target.iff = ally
+From target
+Then allytarget
+
+
+end

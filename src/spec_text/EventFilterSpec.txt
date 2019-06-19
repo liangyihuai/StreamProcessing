@@ -1,0 +1,8 @@
+
+start
+
+If not duplicate(id) & not unusual(speed)
+From rawData
+Then targetData
+
+end

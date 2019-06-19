@@ -1,0 +1,8 @@
+start 
+
+If exist(enemytarget) & exist(flyingTarget)
+From enemytarget, flyingTarget 
+Then cepTarget1
+
+
+end

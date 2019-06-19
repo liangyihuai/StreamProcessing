@@ -1,0 +1,15 @@
+start 
+
+If exist(enemytarget) & exist(flyingTarget)
+From enemytarget, flyingTarget
+Window type=tumble_time, len = 1s
+Then cepTarget1
+
+If exist(enemytarget) & exist(flyingTarget)
+From flyingTarget, nearEnemyTarget
+Window type=tumble_time, len = 1s
+Then dangerousEvent
+
+end
+
+

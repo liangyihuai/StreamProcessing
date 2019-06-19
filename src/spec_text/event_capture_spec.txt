@@ -1,0 +1,11 @@
+start
+
+If target.iff = ally
+From target
+Then allytarget
+
+If target.iff = unknown
+From target
+then enemyTarget
+
+end

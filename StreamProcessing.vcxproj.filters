@@ -1,0 +1,641 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\backend">
+      <UniqueIdentifier>{877364c0-74a5-447a-a905-98d405dabe5b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\backend">
+      <UniqueIdentifier>{1e1ad307-5eff-469a-87f2-ccf0b7d09d95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\backend\test">
+      <UniqueIdentifier>{02d60c54-c6eb-4f5c-8688-96869a419335}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\backend\spec_txt">
+      <UniqueIdentifier>{594c9628-081c-407f-b895-22e8865a3e07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\backend\test\cep_test1">
+      <UniqueIdentifier>{76215722-fb2c-4537-b1f2-4ff2f3e54309}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\backend\test\cep_test2">
+      <UniqueIdentifier>{5edcaaa9-cee8-43da-87c1-733472cec1eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\backend\buffer">
+      <UniqueIdentifier>{25e0aecc-9dfe-4447-bba8-20a537aa662d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\backend\execution">
+      <UniqueIdentifier>{1d9d485b-b410-4d99-9535-e2eb5a8f4e40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\backend\op">
+      <UniqueIdentifier>{9d213773-fcd8-458f-b951-010b6d829776}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\backend\execution\win">
+      <UniqueIdentifier>{be36e987-3795-40a5-8fb0-660d99c38ec6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\backend\execution\event">
+      <UniqueIdentifier>{1659729b-43e5-44dc-8931-29dad827263b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\backend\utils">
+      <UniqueIdentifier>{11b445e3-89b4-49d8-a940-a49137838599}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\backend\expression">
+      <UniqueIdentifier>{21b01172-7bf1-4904-beb3-e52058f130bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\backend\op">
+      <UniqueIdentifier>{dfcbad6d-4d74-47a2-a6ef-1472adb6f6d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\backend\execution">
+      <UniqueIdentifier>{48f7bf9e-18d6-4544-83ba-7cabe5a550c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\backend\execution\win">
+      <UniqueIdentifier>{d10db58f-0e51-40b4-a3a7-d496d8b5c844}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\backend\execution\event">
+      <UniqueIdentifier>{a638cc2b-58d6-4423-8096-12e8c7ad58ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\backend\execution\results">
+      <UniqueIdentifier>{45c2ceb9-29d5-4724-a534-c991ddf243ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\backend\buffer">
+      <UniqueIdentifier>{651a6785-d66e-4bba-bd25-ebc7ddd3cd1d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\backend\spec">
+      <UniqueIdentifier>{4ed04195-b317-4d3d-9867-2113710f69d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\backend\spec">
+      <UniqueIdentifier>{9c671ebe-1d54-420d-8f77-3f7084058f5d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\backend\common">
+      <UniqueIdentifier>{747b22cb-1784-449c-9110-fc09a24a6166}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\backend\cqindex">
+      <UniqueIdentifier>{b36cdfb6-1d10-43bb-93e8-c3fcc16492f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\backend\cqindex">
+      <UniqueIdentifier>{b11dfd2b-7f52-4fa9-baa9-e26c6759bf22}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\common\Event.h">
+      <Filter>Header Files\backend\common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\Consts.h">
+      <Filter>Header Files\backend\common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\Config.h">
+      <Filter>Header Files\backend\common</Filter>
+    </ClInclude>
+    <ClInclude Include="src\cqindex\CQIndex.h">
+      <Filter>Header Files\backend\cqindex</Filter>
+    </ClInclude>
+    <ClInclude Include="src\cqindex\ProcessRegisterForCQIndex.h">
+      <Filter>Header Files\backend\cqindex</Filter>
+    </ClInclude>
+    <ClInclude Include="src\cqindex\RTreeCQIndex.h">
+      <Filter>Header Files\backend\cqindex</Filter>
+    </ClInclude>
+    <ClInclude Include="src\expression\And.h">
+      <Filter>Header Files\backend\expression</Filter>
+    </ClInclude>
+    <ClInclude Include="src\expression\Condition.h">
+      <Filter>Header Files\backend\expression</Filter>
+    </ClInclude>
+    <ClInclude Include="src\expression\EqualString.h">
+      <Filter>Header Files\backend\expression</Filter>
+    </ClInclude>
+    <ClInclude Include="src\expression\GreaterEqualThanInt.h">
+      <Filter>Header Files\backend\expression</Filter>
+    </ClInclude>
+    <ClInclude Include="src\expression\GreaterThanFloat.h">
+      <Filter>Header Files\backend\expression</Filter>
+    </ClInclude>
+    <ClInclude Include="src\expression\GreatThanOpPreDouble.h">
+      <Filter>Header Files\backend\expression</Filter>
+    </ClInclude>
+    <ClInclude Include="src\expression\LessThanFloat.h">
+      <Filter>Header Files\backend\expression</Filter>
+    </ClInclude>
+    <ClInclude Include="src\expression\LessThanOpPreDouble.h">
+      <Filter>Header Files\backend\expression</Filter>
+    </ClInclude>
+    <ClInclude Include="src\expression\Predicate.h">
+      <Filter>Header Files\backend\expression</Filter>
+    </ClInclude>
+    <ClInclude Include="src\expression\PredicateBase.h">
+      <Filter>Header Files\backend\expression</Filter>
+    </ClInclude>
+    <ClInclude Include="src\expression\TruePredicate.h">
+      <Filter>Header Files\backend\expression</Filter>
+    </ClInclude>
+    <ClInclude Include="src\expression\OperatorPredicate.h">
+      <Filter>Header Files\backend\expression</Filter>
+    </ClInclude>
+    <ClInclude Include="src\op\Average.h">
+      <Filter>Header Files\backend\op</Filter>
+    </ClInclude>
+    <ClInclude Include="src\op\Count.h">
+      <Filter>Header Files\backend\op</Filter>
+    </ClInclude>
+    <ClInclude Include="src\op\ExistOp.h">
+      <Filter>Header Files\backend\op</Filter>
+    </ClInclude>
+    <ClInclude Include="src\spec\CEPSpec.h">
+      <Filter>Header Files\backend\spec</Filter>
+    </ClInclude>
+    <ClInclude Include="src\spec\CQSpecParser.h">
+      <Filter>Header Files\backend\spec</Filter>
+    </ClInclude>
+    <ClInclude Include="src\spec\CQSpec.h">
+      <Filter>Header Files\backend\spec</Filter>
+    </ClInclude>
+    <ClInclude Include="src\spec\EventCaptureSpec.h">
+      <Filter>Header Files\backend\spec</Filter>
+    </ClInclude>
+    <ClInclude Include="src\spec\EventFilterSpec.h">
+      <Filter>Header Files\backend\spec</Filter>
+    </ClInclude>
+    <ClInclude Include="src\spec\Spec.h">
+      <Filter>Header Files\backend\spec</Filter>
+    </ClInclude>
+    <ClInclude Include="src\spec\SpecParser.h">
+      <Filter>Header Files\backend\spec</Filter>
+    </ClInclude>
+    <ClInclude Include="src\spec\SpecRegister.h">
+      <Filter>Header Files\backend\spec</Filter>
+    </ClInclude>
+    <ClInclude Include="src\util\Utils.h">
+      <Filter>Header Files\backend\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="src\spec\EventCaptureSpecParser.h">
+      <Filter>Header Files\backend\spec</Filter>
+    </ClInclude>
+    <ClInclude Include="src\spec\EventFilterSpecParser.h">
+      <Filter>Header Files\backend\spec</Filter>
+    </ClInclude>
+    <ClInclude Include="src\spec\CEPSpecParser.h">
+      <Filter>Header Files\backend\spec</Filter>
+    </ClInclude>
+    <ClInclude Include="src\util\FileReaderUtils.h">
+      <Filter>Header Files\backend\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="src\util\SpecUtils.h">
+      <Filter>Header Files\backend\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gui\StreamProcessing.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gui\StreamProcessingDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gui\ThreadOfInputStreamPrint.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\op\OperatorRegister.h">
+      <Filter>Header Files\backend</Filter>
+    </ClInclude>
+    <ClInclude Include="src\execution\CEPProcess.h">
+      <Filter>Header Files\backend\execution</Filter>
+    </ClInclude>
+    <ClInclude Include="src\execution\CQProcess.h">
+      <Filter>Header Files\backend\execution</Filter>
+    </ClInclude>
+    <ClInclude Include="src\execution\EventCapture.h">
+      <Filter>Header Files\backend\execution</Filter>
+    </ClInclude>
+    <ClInclude Include="src\execution\EventProcess.h">
+      <Filter>Header Files\backend\execution</Filter>
+    </ClInclude>
+    <ClInclude Include="src\execution\ExecuteScheduler.h">
+      <Filter>Header Files\backend</Filter>
+    </ClInclude>
+    <ClInclude Include="src\execution\Executor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\execution\Process.h">
+      <Filter>Header Files\backend\execution</Filter>
+    </ClInclude>
+    <ClInclude Include="src\util\CQIndexUtils.h">
+      <Filter>Header Files\backend\cqindex</Filter>
+    </ClInclude>
+    <ClInclude Include="src\util\EventGenerator.h">
+      <Filter>Header Files\backend</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\SinkType.h">
+      <Filter>Header Files\backend\execution</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\Logger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\execution\result\BoolResult.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\execution\result\LongResult.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\execution\result\DoubleResult.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\execution\result\Result.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\execution\result\ResultListener.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\execution\result\CEPPrintResultListener.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\execution\result\MultEventResult.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\execution\result\SingleEventResult.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\op\inter\Operator.h">
+      <Filter>Header Files\backend\op</Filter>
+    </ClInclude>
+    <ClInclude Include="src\op\inter\StatefulOperator.h">
+      <Filter>Header Files\backend\op</Filter>
+    </ClInclude>
+    <ClInclude Include="src\op\inter\AggregateOperator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\op\win\Window.h">
+      <Filter>Header Files\backend\execution\win</Filter>
+    </ClInclude>
+    <ClInclude Include="src\op\win\NaiveTimeSlidingWindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\op\Sum.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\op\WithinAreaOp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\op\OutsideAreaOp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\op\DistanceOp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\op\Max.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\op\Min.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\EventQueue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\execution\TopoGraph.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\execution\ProcessRegister.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gui\MultiThreads.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gui\RuleRegisterUtils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\common\Event0.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\op\win\NaiveTimeDistinctSlidingWindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\op\ApproachingOP.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\op\HoveringOp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\expression\EqualBool.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gui\ShowMovingObjDialog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\test\performanceTest\DataSample1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gui\MovingObjectDrawing.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\gui\ProcessFlowDrawing.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\test\performanceTest\SampleEventGenerator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\test\performanceTest\RuleSpec.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\common\Event.cpp">
+      <Filter>Source Files\backend\execution\event</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cqindex\ProcessRegisterForCQIndex.cpp">
+      <Filter>Source Files\backend\cqindex</Filter>
+    </ClCompile>
+    <ClCompile Include="src\cqindex\RTreeCQIndex.cpp">
+      <Filter>Source Files\backend\cqindex</Filter>
+    </ClCompile>
+    <ClCompile Include="src\expression\Condition.cpp">
+      <Filter>Source Files\backend\op</Filter>
+    </ClCompile>
+    <ClCompile Include="src\op\Average.cpp">
+      <Filter>Source Files\backend\op</Filter>
+    </ClCompile>
+    <ClCompile Include="src\op\Count.cpp">
+      <Filter>Source Files\backend\op</Filter>
+    </ClCompile>
+    <ClCompile Include="src\op\ExistOp.cpp">
+      <Filter>Source Files\backend\op</Filter>
+    </ClCompile>
+    <ClCompile Include="src\spec\CEPSpec.cpp">
+      <Filter>Source Files\backend\spec</Filter>
+    </ClCompile>
+    <ClCompile Include="src\spec\CQSpecParser.cpp">
+      <Filter>Source Files\backend\spec</Filter>
+    </ClCompile>
+    <ClCompile Include="src\spec\CQSpec.cpp">
+      <Filter>Source Files\backend\spec</Filter>
+    </ClCompile>
+    <ClCompile Include="src\spec\EventCaptureSpec.cpp">
+      <Filter>Source Files\backend\spec</Filter>
+    </ClCompile>
+    <ClCompile Include="src\spec\EventFilterSpec.cpp">
+      <Filter>Source Files\backend\spec</Filter>
+    </ClCompile>
+    <ClCompile Include="src\spec\SpecParser.cpp">
+      <Filter>Source Files\backend\spec</Filter>
+    </ClCompile>
+    <ClCompile Include="src\spec\SpecRegister.cpp">
+      <Filter>Source Files\backend\spec</Filter>
+    </ClCompile>
+    <ClCompile Include="src\spec\CEPSpecParser.cpp">
+      <Filter>Source Files\backend\spec</Filter>
+    </ClCompile>
+    <ClCompile Include="src\test\CEP_SpecTest.cpp">
+      <Filter>Source Files\backend\test</Filter>
+    </ClCompile>
+    <ClCompile Include="src\test\CEPTest_Spec2.cpp">
+      <Filter>Source Files\backend\test\cep_test2</Filter>
+    </ClCompile>
+    <ClCompile Include="src\test\CEPTest_Spec1.cpp">
+      <Filter>Source Files\backend\test\cep_test1</Filter>
+    </ClCompile>
+    <ClCompile Include="src\test\CQ_SpecTest.cpp">
+      <Filter>Source Files\backend\test</Filter>
+    </ClCompile>
+    <ClCompile Include="src\test\CQ_SpecTest2.cpp">
+      <Filter>Source Files\backend\test</Filter>
+    </ClCompile>
+    <ClCompile Include="src\test\EventCapture_SpecTest.cpp">
+      <Filter>Source Files\backend\test</Filter>
+    </ClCompile>
+    <ClCompile Include="src\test\EventFilter_SpecTest.cpp">
+      <Filter>Source Files\backend\test</Filter>
+    </ClCompile>
+    <ClCompile Include="src\test\EventProcessTest.cpp">
+      <Filter>Source Files\backend\test</Filter>
+    </ClCompile>
+    <ClCompile Include="src\test\GlogTest.cpp">
+      <Filter>Source Files\backend\test</Filter>
+    </ClCompile>
+    <ClCompile Include="src\test\main.cpp">
+      <Filter>Source Files\backend\test</Filter>
+    </ClCompile>
+    <ClCompile Include="src\test\Main2.cpp">
+      <Filter>Source Files\backend\test</Filter>
+    </ClCompile>
+    <ClCompile Include="src\util\Utils.cpp">
+      <Filter>Source Files\backend</Filter>
+    </ClCompile>
+    <ClCompile Include="src\test\TimerTest.cpp">
+      <Filter>Source Files\backend\test</Filter>
+    </ClCompile>
+    <ClCompile Include="src\test\ThreadTest1.cpp">
+      <Filter>Source Files\backend\test</Filter>
+    </ClCompile>
+    <ClCompile Include="src\test\TestSharedQueue2.cpp">
+      <Filter>Source Files\backend\test</Filter>
+    </ClCompile>
+    <ClCompile Include="src\test\TestSharedQueue.cpp">
+      <Filter>Source Files\backend\test</Filter>
+    </ClCompile>
+    <ClCompile Include="src\test\TestOperatorPredicate.cpp">
+      <Filter>Source Files\backend\test</Filter>
+    </ClCompile>
+    <ClCompile Include="src\test\TestHybridRegion.cpp">
+      <Filter>Source Files\backend\test</Filter>
+    </ClCompile>
+    <ClCompile Include="src\test\TestEventProcess.cpp">
+      <Filter>Source Files\backend\test</Filter>
+    </ClCompile>
+    <ClCompile Include="src\test\TestEventCapture_CQ_CEP.cpp">
+      <Filter>Source Files\backend\test</Filter>
+    </ClCompile>
+    <ClCompile Include="src\test\TestEventCapture.cpp">
+      <Filter>Source Files\backend\test</Filter>
+    </ClCompile>
+    <ClCompile Include="src\test\TestCQProcess.cpp">
+      <Filter>Source Files\backend\test</Filter>
+    </ClCompile>
+    <ClCompile Include="src\test\Test_largetObject2.cpp">
+      <Filter>Source Files\backend\test</Filter>
+    </ClCompile>
+    <ClCompile Include="src\spec\EventFilterSpecParser.cpp">
+      <Filter>Source Files\backend\spec</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gui\StreamProcessing.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gui\StreamProcessingDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gui\ThreadOfInputStreamPrint.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gui\ProcessFlowDrawing.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\op\OperatorRegister.cpp">
+      <Filter>Source Files\backend</Filter>
+    </ClCompile>
+    <ClCompile Include="src\execution\CEPProcess.cpp">
+      <Filter>Source Files\backend\execution</Filter>
+    </ClCompile>
+    <ClCompile Include="src\execution\CQProcess.cpp">
+      <Filter>Source Files\backend\execution</Filter>
+    </ClCompile>
+    <ClCompile Include="src\execution\EventCapture.cpp">
+      <Filter>Source Files\backend\execution</Filter>
+    </ClCompile>
+    <ClCompile Include="src\execution\EventProcess.cpp">
+      <Filter>Source Files\backend\execution</Filter>
+    </ClCompile>
+    <ClCompile Include="src\execution\ExecuteScheduler.cpp">
+      <Filter>Source Files\backend\execution</Filter>
+    </ClCompile>
+    <ClCompile Include="src\util\CQIndexUtils.cpp">
+      <Filter>Source Files\backend\cqindex</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\HashEvent.cpp">
+      <Filter>Source Files\backend\execution\event</Filter>
+    </ClCompile>
+    <ClCompile Include="src\test\funcTest\TestSlidingWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\op\Sum.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\op\WithinAreaOp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\op\OutsideAreaOp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\op\DistanceOp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\op\Max.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\op\Min.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\execution\TopoGraph.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\execution\ProcessRegister.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gui\MultiThreads.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\test\performanceTest\PerformanceTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\op\win\NaiveTimeSlidingWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\execution\Process.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\Event0.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\test\funcTest\TestUtilsFunc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\op\win\NaiveTimeDistinctSlidingWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\op\ApproachingOP.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\op\HoveringOp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gui\ShowMovingObjDialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\gui\MovingObjDrawing.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\util\EventGenerator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\test\performanceTest\SampleEventGenerator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\test\performanceTest\Main_GenerateSampleData.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="src\spec_text\cep_spec.txt">
+      <Filter>Source Files\backend\test\cep_test1</Filter>
+    </Text>
+    <Text Include="src\spec_text\cep_spec2.txt">
+      <Filter>Source Files\backend\test\cep_test2</Filter>
+    </Text>
+    <Text Include="src\spec_text\CEPSpec.txt">
+      <Filter>Source Files\backend\spec_txt</Filter>
+    </Text>
+    <Text Include="src\spec_text\cq_spec.txt">
+      <Filter>Source Files\backend\test\cep_test1</Filter>
+    </Text>
+    <Text Include="src\spec_text\cq_spec2.txt">
+      <Filter>Source Files\backend\test\cep_test2</Filter>
+    </Text>
+    <Text Include="src\spec_text\CQSpec.txt">
+      <Filter>Source Files\backend\spec_txt</Filter>
+    </Text>
+    <Text Include="src\spec_text\CQSpecTest2.txt">
+      <Filter>Source Files\backend\spec_txt</Filter>
+    </Text>
+    <Text Include="src\spec_text\event_capture_spec.txt">
+      <Filter>Source Files\backend\test\cep_test1</Filter>
+    </Text>
+    <Text Include="src\spec_text\event_capture_spec2.txt">
+      <Filter>Source Files\backend\test\cep_test2</Filter>
+    </Text>
+    <Text Include="src\spec_text\EventCaptureSpec.txt">
+      <Filter>Source Files\backend\spec_txt</Filter>
+    </Text>
+    <Text Include="src\spec_text\EventFilterSpec.txt">
+      <Filter>Source Files\backend\spec_txt</Filter>
+    </Text>
+    <Text Include="src\spec_text\GUI1.txt">
+      <Filter>Source Files\backend\spec_txt</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="src\StreamProcessing.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="src\res\StreamProcessing.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="src\res\StreamProcessing.rc2">
+      <Filter>Resource Files</Filter>
+    </None>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,8 @@
+start 
+
+If exist(unknownTarget) & exist(allyTarget)
+From unknownTarget, allyTarget 
+Then cepTarget1
+
+
+end

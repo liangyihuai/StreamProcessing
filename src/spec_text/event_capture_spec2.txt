@@ -1,0 +1,10 @@
+start
+
+
+If target.iff = unknown
+From target
+then enemyTarget
+
+
+
+end

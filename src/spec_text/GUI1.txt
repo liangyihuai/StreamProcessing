@@ -1,0 +1,48 @@
+# event filter
+
+If not duplicate(id) & not unusual(speed)		
+From rawData		
+Then targetData
+
+
+# event capture
+#----->
+If target.iff = ally		
+From targetData		
+Then allytarget
+#------<
+
+If target.iff = unknown		
+From targetData		
+Then enemyTarget
+
+
+# CQ
+#--------->
+If speed>500 & elevation > 200
+From allytarget		
+Then flyingAllyTarget
+#---------<
+
+If distance(127.12, 35.33)<0.52	
+From enemyTarget		
+Then nearbyEnemyTarget
+
+If speed>500 & elevation > 200	
+From enemyTarget		
+Then flyingEnemyTarget
+
+# cep
+#---------->
+If exist(flyingAllyTarget)		
+From flyingAllyTarget	
+Then cepTarget1
+#----------<
+
+If exist(nearbyEnemyTarget) & exist(flyingEnemyTarget)		
+From nearbyEnemyTarget, flyingEnemyTarget	
+Then dangerousTarget
+
+If exist(enemyTarget) & exist(flyingAllyTarget)		
+From enemyTarget, flyingAllyTarget		
+Then cepTarget2

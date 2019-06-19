@@ -1,0 +1,16 @@
+start
+
+If speed>200
+From enemyTarget
+Then flyingTarget
+
+
+If distance(127.2, 36.3) < 0.1
+From enemyTarget
+Then nearEnemyTarget
+
+end
+
+
+
+

@@ -1,0 +1,11 @@
+start
+
+If iff = ally & speed>500
+From allytarget
+Then flyingTarget
+
+end
+
+If distance(3, 2) < 1.1
+From allytarget
+Then flyingtarget

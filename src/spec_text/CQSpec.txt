@@ -1,0 +1,8 @@
+start
+
+If iff = ally & speed>500
+From allytarget
+Then flyingTarget
+
+end
+
