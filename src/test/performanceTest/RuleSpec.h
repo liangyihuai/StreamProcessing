@@ -61,17 +61,39 @@ string cq_enemy_approaching_aircraft_severe = "IF approaching(EnemyAircraft) = t
 \r\nFROM EnemyAircraft\
 \r\nTHEN AircraftSevereThreat, threatLevel = severe";
 
-string cq_enemy_hovering_aircraft_common = "IF hovering(EnemyAircraft) = true & distance(127.5, 35.5) > 0.5\
+string cq_enemy_hovering_aircraft_common = "IF hovering(EnemyAircraft) = true & distance(127.5, 35.5) > 0.5 & distance(127.5, 35.5) < 1\
 \r\nFrom EnemyAircraft\
 \r\nThen AircraftCommonThreat, threatLevel=common";
 
-string cq_enemy_battleship_hovering_common = "IF hovering(EnemyBattleship) = true & distance(127.5, 35.5) > 0.5\
+string cq_enemy_hovering_aircraft_noThreat =  "IF hovering(EnemyAircraft) = true & distance(127.5, 35.5) > 1\
+\r\nFrom EnemyAircraft\
+\r\nThen AircraftNoThreat, threatLevel=no";
+
+
+string cq_enemy_battleship_hovering_common = "IF hovering(EnemyBattleship) = true & distance(127.5, 35.5) > 0.5 & distance(127.5, 35.5) < 1\
 \r\nFrom EnemyBattleship\
 \r\nThen BattleshipCommonThreat, threatLevel=common";
 
 string cq_enemy_battleship_approaching_severe= "IF approaching(EnemyBattleship) = true & distance(127.5, 35.5) < 0.5\
 \r\nFrom EnemyBattleship\
 \r\nThen BattleshipSevereThreat, threatLevel=severe";
+
+string cq_enemy_battleship_hovering_noThreat = "IF hovering(EnemyBattleship) = true & distance(127.5, 35.5) > 1 \
+\r\nFrom EnemyBattleship\
+\r\nThen BattleshipNoThreat, threatLevel=no";
+
+
+string cq_enemy_submarine_hovering_common = "IF hovering(EnemySubmarine) = true & distance(127.5, 35.5) > 0.5 & distance(127.5, 35.5) < 1\
+\r\nFrom EnemySubmarine\
+\r\nThen SubmarineCommonThreat, threatLevel=common";
+
+string cq_enemy_submarine_approaching_severe = "IF approaching(EnemySubmarine) = true & distance(127.5, 35.5) < 0.5\
+\r\nFrom EnemySubmarine\
+\r\nThen SubmarineSevereThreat, threatLevel=severe";
+
+string cq_enemy_submarine_hovering_noThreat = "IF hovering(EnemySubmarine) = true & distance(127.5, 35.5) > 1 \
+\r\nFrom EnemySubmarine\
+\r\nThen SubmarineNoThreat, threatLevel=no";
 
 //-------------------------------------------------------------
 /*Count by threat levels, which are severe threat, common threat, no threat.*/
