@@ -342,19 +342,19 @@
     <ClInclude Include="src\gui\ShowMovingObjDialog.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\test\performanceTest\DataSample1.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\gui\MovingObjectDrawing.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\gui\ProcessFlowDrawing.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\test\performanceTest\SampleEventGenerator.h">
+    <ClInclude Include="src\test\rule_test\DataSample1.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\test\performanceTest\RuleSpec.h">
+    <ClInclude Include="src\test\rule_test\RuleSpec.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\test\rule_test\SampleEventGenerator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -404,74 +404,8 @@
     <ClCompile Include="src\spec\CEPSpecParser.cpp">
       <Filter>Source Files\backend\spec</Filter>
     </ClCompile>
-    <ClCompile Include="src\test\CEP_SpecTest.cpp">
-      <Filter>Source Files\backend\test</Filter>
-    </ClCompile>
-    <ClCompile Include="src\test\CEPTest_Spec2.cpp">
-      <Filter>Source Files\backend\test\cep_test2</Filter>
-    </ClCompile>
-    <ClCompile Include="src\test\CEPTest_Spec1.cpp">
-      <Filter>Source Files\backend\test\cep_test1</Filter>
-    </ClCompile>
-    <ClCompile Include="src\test\CQ_SpecTest.cpp">
-      <Filter>Source Files\backend\test</Filter>
-    </ClCompile>
-    <ClCompile Include="src\test\CQ_SpecTest2.cpp">
-      <Filter>Source Files\backend\test</Filter>
-    </ClCompile>
-    <ClCompile Include="src\test\EventCapture_SpecTest.cpp">
-      <Filter>Source Files\backend\test</Filter>
-    </ClCompile>
-    <ClCompile Include="src\test\EventFilter_SpecTest.cpp">
-      <Filter>Source Files\backend\test</Filter>
-    </ClCompile>
-    <ClCompile Include="src\test\EventProcessTest.cpp">
-      <Filter>Source Files\backend\test</Filter>
-    </ClCompile>
-    <ClCompile Include="src\test\GlogTest.cpp">
-      <Filter>Source Files\backend\test</Filter>
-    </ClCompile>
-    <ClCompile Include="src\test\main.cpp">
-      <Filter>Source Files\backend\test</Filter>
-    </ClCompile>
-    <ClCompile Include="src\test\Main2.cpp">
-      <Filter>Source Files\backend\test</Filter>
-    </ClCompile>
     <ClCompile Include="src\util\Utils.cpp">
       <Filter>Source Files\backend</Filter>
-    </ClCompile>
-    <ClCompile Include="src\test\TimerTest.cpp">
-      <Filter>Source Files\backend\test</Filter>
-    </ClCompile>
-    <ClCompile Include="src\test\ThreadTest1.cpp">
-      <Filter>Source Files\backend\test</Filter>
-    </ClCompile>
-    <ClCompile Include="src\test\TestSharedQueue2.cpp">
-      <Filter>Source Files\backend\test</Filter>
-    </ClCompile>
-    <ClCompile Include="src\test\TestSharedQueue.cpp">
-      <Filter>Source Files\backend\test</Filter>
-    </ClCompile>
-    <ClCompile Include="src\test\TestOperatorPredicate.cpp">
-      <Filter>Source Files\backend\test</Filter>
-    </ClCompile>
-    <ClCompile Include="src\test\TestHybridRegion.cpp">
-      <Filter>Source Files\backend\test</Filter>
-    </ClCompile>
-    <ClCompile Include="src\test\TestEventProcess.cpp">
-      <Filter>Source Files\backend\test</Filter>
-    </ClCompile>
-    <ClCompile Include="src\test\TestEventCapture_CQ_CEP.cpp">
-      <Filter>Source Files\backend\test</Filter>
-    </ClCompile>
-    <ClCompile Include="src\test\TestEventCapture.cpp">
-      <Filter>Source Files\backend\test</Filter>
-    </ClCompile>
-    <ClCompile Include="src\test\TestCQProcess.cpp">
-      <Filter>Source Files\backend\test</Filter>
-    </ClCompile>
-    <ClCompile Include="src\test\Test_largetObject2.cpp">
-      <Filter>Source Files\backend\test</Filter>
     </ClCompile>
     <ClCompile Include="src\spec\EventFilterSpecParser.cpp">
       <Filter>Source Files\backend\spec</Filter>
@@ -545,9 +479,6 @@
     <ClCompile Include="src\gui\MultiThreads.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\test\performanceTest\PerformanceTest.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\op\win\NaiveTimeSlidingWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -578,10 +509,79 @@
     <ClCompile Include="src\util\EventGenerator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\test\performanceTest\SampleEventGenerator.cpp">
+    <ClCompile Include="src\test\other\CEP_SpecTest.cpp">
+      <Filter>Source Files\backend\test</Filter>
+    </ClCompile>
+    <ClCompile Include="src\test\other\CEPTest_Spec1.cpp">
+      <Filter>Source Files\backend\test\cep_test1</Filter>
+    </ClCompile>
+    <ClCompile Include="src\test\other\CEPTest_Spec2.cpp">
+      <Filter>Source Files\backend\test\cep_test2</Filter>
+    </ClCompile>
+    <ClCompile Include="src\test\other\CQ_SpecTest.cpp">
+      <Filter>Source Files\backend\test</Filter>
+    </ClCompile>
+    <ClCompile Include="src\test\other\CQ_SpecTest2.cpp">
+      <Filter>Source Files\backend\test</Filter>
+    </ClCompile>
+    <ClCompile Include="src\test\other\EventCapture_SpecTest.cpp">
+      <Filter>Source Files\backend\test</Filter>
+    </ClCompile>
+    <ClCompile Include="src\test\other\EventFilter_SpecTest.cpp">
+      <Filter>Source Files\backend\test</Filter>
+    </ClCompile>
+    <ClCompile Include="src\test\other\EventProcessTest.cpp">
+      <Filter>Source Files\backend\test</Filter>
+    </ClCompile>
+    <ClCompile Include="src\test\other\GlogTest.cpp">
+      <Filter>Source Files\backend\test</Filter>
+    </ClCompile>
+    <ClCompile Include="src\test\other\main.cpp">
+      <Filter>Source Files\backend\test</Filter>
+    </ClCompile>
+    <ClCompile Include="src\test\other\Main2.cpp">
+      <Filter>Source Files\backend\test</Filter>
+    </ClCompile>
+    <ClCompile Include="src\test\other\Test_largetObject2.cpp">
+      <Filter>Source Files\backend\test</Filter>
+    </ClCompile>
+    <ClCompile Include="src\test\other\TestCQProcess.cpp">
+      <Filter>Source Files\backend\test</Filter>
+    </ClCompile>
+    <ClCompile Include="src\test\other\TestEventCapture.cpp">
+      <Filter>Source Files\backend\test</Filter>
+    </ClCompile>
+    <ClCompile Include="src\test\other\TestEventCapture_CQ_CEP.cpp">
+      <Filter>Source Files\backend\test</Filter>
+    </ClCompile>
+    <ClCompile Include="src\test\other\TestEventProcess.cpp">
+      <Filter>Source Files\backend\test</Filter>
+    </ClCompile>
+    <ClCompile Include="src\test\other\TestHybridRegion.cpp">
+      <Filter>Source Files\backend\test</Filter>
+    </ClCompile>
+    <ClCompile Include="src\test\other\TestOperatorPredicate.cpp">
+      <Filter>Source Files\backend\test</Filter>
+    </ClCompile>
+    <ClCompile Include="src\test\other\TestSharedQueue.cpp">
+      <Filter>Source Files\backend\test</Filter>
+    </ClCompile>
+    <ClCompile Include="src\test\other\TestSharedQueue2.cpp">
+      <Filter>Source Files\backend\test</Filter>
+    </ClCompile>
+    <ClCompile Include="src\test\other\ThreadTest1.cpp">
+      <Filter>Source Files\backend\test</Filter>
+    </ClCompile>
+    <ClCompile Include="src\test\other\TimerTest.cpp">
+      <Filter>Source Files\backend\test</Filter>
+    </ClCompile>
+    <ClCompile Include="src\test\rule_test\Main_GenerateSampleData.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\test\performanceTest\Main_GenerateSampleData.cpp">
+    <ClCompile Include="src\test\rule_test\SampleEventGenerator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\test\rule_test\Main_rule_test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

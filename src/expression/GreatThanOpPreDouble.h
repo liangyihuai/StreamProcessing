@@ -23,7 +23,7 @@ public:
 
     bool check(EventPtr e){
         ResultPtr result = op->result(e);
-        return result->getResultBool() > value;
+		return result->getResultDouble() > value;
     }
 
 };

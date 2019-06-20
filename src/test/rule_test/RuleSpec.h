@@ -12,7 +12,7 @@ string event_filter_rule = "If not duplicate(id) & not unusual(speed)\
 \r\nFrom rawData\
 \r\nThen FilterEvent0";
 
-string event_filter_rule2 = "IF id > -1 & 0 <= dir <= 360 & 0 <= lon <= 180 & 0 <= lat <= 180 & -10 < ele < 5000 & 0 <= elevationAngle <= 90 & 0 <= speed < 5000\
+string event_filter_rule2 = "IF id > -1 & dir >= 0 & dir <= 360 & lon >= 0 & lon <= 180 & lat >= 0 & lat <= 180 &  ele > -10 & ele < 5000 & elevationAngle >= 0& elevationAngle <= 90 & speed>= 0 & speed < 5000\
 \r\nFROM FilterEvent0\
 \r\nTHEN FilteredData";
 
@@ -146,6 +146,18 @@ string cq_count_no_threat_Submarine = "IF SubmarineNoThreat.threatLevel = no\
 //-------------------------------------------------------------
 /*Threat situation detection.*/
 //-------------------------------------------------------------
+
+/*no threat for aircraft, battleship and submarine*/
+string cq_situation_noThreat_AircraftBattleshipSubmarine = "If AircraftCountNoThreat.count > 0 & BattleshipCountNoThreat.count>0 & SubmarineCountNoThreat.count>0\
+\r\nFrom AircraftCountNoThreat, BattleshipCountNoThreat, SubmarineCountNoThreat\
+\r\nWindow length = 1000, sliding=1000\
+\r\nThen NoThreat_AircraftSubmarineBattleship_situationThreat_Level0";
+
+/*battleship*/
+string cq_situation_noThreat_battleship = "If BattleshipCountNoThreat.count > 0\
+\r\nFrom BattleshipCountNoThreat\
+\r\nThen NoThreatBattleshipSituationThreat_Level0";
+
 string cq_situation_common_battleship = "If BattleshipCountCommonThreat.count >= 3\
 \r\nFrom BattleshipCountCommonThreat\
 \r\nThen CommonBattleshipSituationThreat_Level1";
@@ -154,23 +166,49 @@ string cq_situation_severe_battleship = "If BattleshipCountSevereThreat.count > 
 \r\nFrom BattleshipCountSevereThreat\
 \r\nThen SevereBattleshipSituationThreat_Level2";
 
+/*aircraft*/
+string cq_situation_noThreat_aircraft = "If AircraftCountNoThreat.count > 0\
+\r\nFrom AircraftCountNoThreat\
+\r\nThen NoThreatAircraftSituationThreat_Level0";
+
 string cq_situation_common_aircraft = "If AircraftCountCommonThreat.count >= 3\
 \r\nFrom AircraftCountCommonThreat\
 \r\nThen CommonAircraftSituationThreat_Level1";
 
-string cq_situation_severe_aircraft = "If AircraftCountSevereThreat.count >= 0\
+string cq_situation_severe_aircraft = "If AircraftCountSevereThreat.count > 0\
 \r\nFrom AircraftCountSevereThreat\
 \r\nThen SevereAircraftSituationThreat_Level2";
 
+/*submarine*/
+string cq_situation_noThreat_submarine = "If SubmarineCountNoThreat.count > 0\
+\r\nFrom SubmarineCountNoThreat\
+\r\nThen NoThreatSubmarineSituationthreat_Level0";
+
+string cq_situation_common_submarine = "If SubmarineCountCommonThreat.count > 3\
+\r\nFrom SubmarineCountCommonThreat\
+\r\nThen CommonSubmarineSituationThreat_Level1";
+
+string cq_situation_severe_submarine = "If SubmarineCountSevereThreat.count > 0\
+\r\nFrom SubmarineCountSevereThreat\
+\r\nThen SevereSubmarineSituationThreat_Level2";
+
+/*severe and common battleship*/
 string cq_situation_severe_commonBattleship = "If BattleshipCountCommonThreat.count > 2 & BattleshipCountSevereThreat.count > 0\
 \r\nFrom BattleshipCountCommonThreat, BattleshipCountSevereThreat\
 \r\nWindow length = 1000, sliding=1000\
 \r\nThen Severe_Common_battleshipSituationThreat_Level3;";
 
+/*severe and common aircraft*/
 string cq_situation_severe_commonAircraft = "If AircraftCountCommonThreat.count > 2 & AircraftCountSevereThreat.count > 0\
 \r\nFrom AircraftCountCommonThreat, AircraftCountSevereThreat\
 \r\nWindow length = 1000, sliding=1000\
 \r\nThen Severe_Common_aircraftSituationThreat_Level3;";
+
+/*severe and common submarine*/
+string cq_situation_severe_commonSubmarine = "If SubmarineCountSevereThreat.count > 2 & SubmarineCountCommonThreat.count > 0\
+\r\nFrom SubmarineCountSevereThreat,SubmarineCountCommonThreat\
+\r\nWindow length = 1000, sliding=1000\
+\r\nThen Severe_common_submarineSituationThreat_Level3";
 
 /*severe aircraft and common battleship*/
 string cq_situation_servereAircraft_commonBattleship = "If AircraftCountSevereThreat.count > 0 & BattleshipCountCommonThreat.count > 0\
@@ -184,26 +222,45 @@ string cq_situation_servereBattleship_commonAircraft = "If AircraftCountCommonTh
 \r\nWindow length = 1000, sliding=1000\
 \r\nThen CommonAircraft_SevereBattleship_SituationThreat_Level4;";
 
+/*common aircraft and severe submarine*/
+string cq_situation_commonAircraft_severeSubmarine = "If AircraftCountCommonThreat.count > 2 & SubmarineCountSevereThreat.count > 0\
+\r\nFrom AircraftCountCommonThreat, SubmarineCountSevereThreat\
+\r\nWindow length = 1000, sliding=1000\
+\r\nThen CommonAircraft_SevereSubmarine_situationThreat_Level4";
+
+/*severe aircraft, severe battleship, severe submarine*/
+string cq_situation_severe_AircraftBattleshipSubmarine = "If AircraftCountSevereThreat.count > 0 & SubmarineCountSevereThreat.count > 0&BattleshipCountSevereThreat.count>0\
+\r\nFrom AircraftCountCommonThreat, SubmarineCountSevereThreat, BattleshipCountSevereThreat\
+\r\nWindow length = 1000, sliding=1000\
+\r\nThen Severe_AircraftSubmarineBattleship_situationThreat_Level5";
+
 //-------------------------------------------------------------
 /*CEP Response*/
 //-------------------------------------------------------------
 string cep_response_enemy_battleship1 = "If exist(CommonBattleshipSituationThreat_Level1) & exist(BattleshipCountCommonThreat) & BattleshipCountCommonThreat.objectType == battleship & BattleshipCountCommonThreat.distance(127.5, 35.5) > 0.5\
-	\r\nFrom CommonBattleshipSituationThreat_Level1, BattleshipCountCommonThreat\
-	\r\nThen ResponseEnemyBattleship1";
+\r\nFrom CommonBattleshipSituationThreat_Level1, BattleshipCountCommonThreat\
+\r\nWindow length=3000, sliding=1000\
+\r\nThen ResponseEnemyBattleship1";
 
 string cep_response_enemy_battleship2 = "If exist(SevereBattleshipSituationThreat_Level2) & exist(BattleshipCountSevereThreat) & BattleshipCountSevereThreat.objectType == battleship & BattleshipCountSevereThreat.distance(127.5, 35.5) < 0.5\
-	\r\nFrom SevereBattleshipSituationThreat_Level2, BattleshipCountSevereThreat\
-	\r\nThen ResponseEnemyBattleship2";
+\r\nFrom SevereBattleshipSituationThreat_Level2, BattleshipCountSevereThreat\
+\r\nWindow length=3000, sliding=1000\
+\r\nThen ResponseEnemyBattleship2";
 
-string cep_response_enemy_aircraft1 = "If exist(CommonAircraftSituationThreat_Level1) & exist(AircraftCountCommonThreat) & AircraftCountCommonThreat.objectType ==  aircraft & AircraftCountCommonThreat..distance(127.5, 35.5) > 0.5\
+string cep_response_enemy_aircraft1 = "If exist(CommonAircraftSituationThreat_Level1) & exist(AircraftCountCommonThreat) & AircraftCountCommonThreat.objectType ==  aircraft & AircraftCountCommonThreat.distance(127.5, 35.5) > 0.5\
 \r\nFrom CommonAircraftSituationThreat_Level1, AircraftCountCommonThreat\
+\r\nWindow length=3000, sliding=1000\
 \r\nThen ResponseEnemyAircraft1";
 
-string cep_response_enemy_aircraft2 = "If exist(SevereAircraftSituationThreat_Level2) & exist(AircraftCountSevereThreat) & AircraftCountSevereThreat.objectType ==  aircraft & AircraftCountSevereThreat..distance(127.5, 35.5) < 0.5\
+string cep_response_enemy_aircraft2 = "If exist(SevereAircraftSituationThreat_Level2) & exist(AircraftCountSevereThreat) & AircraftCountSevereThreat.objectType ==  aircraft & AircraftCountSevereThreat.distance(127.5, 35.5) < 0.5\
 \r\nFrom SevereAircraftSituationThreat_Level2, AircraftCountSevereThreat\
+\r\nWindow length=3000, sliding=1000\
 \r\nThen ResponseEnemyAircraft2";
 
-
+string cep_response_enemy_severe_aircraftBattleshipSubmarine = "If exist(Severe_AircraftSubmarineBattleship_situationThreat_Level5)\
+\r\nFrom Severe_AircraftSubmarineBattleship_situationThreat_Level5\
+\r\nWindow length=3000, sliding=1000\
+\r\nThen ResponseEnemySevere_AircraftBattleshipSubmarine";
 
 
 

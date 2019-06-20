@@ -74,7 +74,7 @@ bool CQProcess::process(int timeSlice){
 						}
 					}
 
-					//cout << "CQ[" << outputStreamName << "] " << *currEvent << endl;
+					cout << "CQ[" << outputStreamName << "] " << *currEvent << endl;
 					for (queue<EventPtr>* outputQueue : inputQueueSetOfDownstreamProcessUnit) {
 						outputQueue->push(currEvent);
 					}
@@ -181,7 +181,7 @@ void CQProcess::triggerResult() {
 						//如果newAttrNames和operatorNames都为空，就time和output stream name
 
 						currEvent->addAttr("name", currProcess->outputStreamName);
-						cout << "CQ:" << currProcess->outputStreamName << "; " << *currEvent << endl;
+						cout << "CQ[" << currProcess->outputStreamName << "]; " << *currEvent << endl;
 						for (queue<EventPtr>* outputQueue : currProcess->inputQueueSetOfDownstreamProcessUnit) {
 							outputQueue->push(currEvent);
 						}

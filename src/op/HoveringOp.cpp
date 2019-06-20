@@ -62,7 +62,7 @@ ResultPtr HoveringOp::result(EventPtr event) {
 }
 
 void HoveringOp::refresh(list<EventPtr>* win) {
-	while (win->front()->getTime() + windowLen < Utils::getTime()) {
+	while (win != nullptr && !win->empty() && win->front()->getTime() + windowLen < Utils::getTime()) {
 		win->pop_front();
 	}
 }

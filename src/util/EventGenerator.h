@@ -53,7 +53,7 @@ public:
 			e->addAttr("electromagnetic", "ally");
 		}*/
 
-		cout << *e;
+		//cout << *e;
 		return EventPtr (e);
 	}
 

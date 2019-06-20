@@ -19,8 +19,8 @@
 #include "MultiThreads.h"
 #include "RuleRegisterUtils.h"
 #include "MovingObjectDrawing.h"
-#include "../test/performanceTest/DataSample1.h"
-#include "../test/performanceTest/SampleEventGenerator.h"
+#include "../test/rule_test/DataSample1.h"
+#include "../test/rule_test/SampleEventGenerator.h"
 
 
 //#include "../test/performanceTest/DataSample1.h"

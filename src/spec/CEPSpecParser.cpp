@@ -4,6 +4,7 @@
 #include "../op/OperatorRegister.h"
 #include "../expression/LessThanOpPreDouble.h"
 #include "../expression/GreatThanOpPreDouble.h"
+#include "..//expression/EqualBool.h"
 
 //list<CEPSpec*> CEPSpecParser::parseAllCEPSpec(const list<string> allCEPSpecs) {
 //	list<CEPSpec*> result;
@@ -129,8 +130,7 @@ void CEPSpecParser::parseMultiExpression(string expStr, CEPSpec *cepSpec) {
 				int index1 = fieldName.find("(");
 				int index2 = fieldName.find(")");
 				if ((index1 > -1 && index2 > -1)) {
-					cout << "error: currently in IF clause, no other operator except Exist()";
-					throw "";
+					andPredicate->addChild(parseExpressionWithOperator(expression));
 				}else {
 					andPredicate->addChild(parseValueExpression(fieldName, mid, right));
 				}
@@ -275,25 +275,30 @@ Predicate * CEPSpecParser::parseExpressionWithOperator(string expression) {
 	Operator * op = OperatorRegister::getInstance(opName, parameters);
 
 	//Operator<double> *doubleOp = dynamic_cast<Operator<double>*>(op);
-
 	string value = right;
 
-	Predicate * pre = nullptr;
+	if (value == "true") {
+		return new EqualBool(op, true);
+	}
+	else if (value == "false") {
+		return new EqualBool(op, false);
+	}
+
 	stringstream ss;
 	float f = 0.0;
 	ss << value;
 	ss >> f;
 	if (mid == ">=") {
-		pre = new GreatThanOpPreDouble(op, f);
+		return new GreatThanOpPreDouble(op, f);
 	}
 	else if (mid == ">") {
-		pre = new GreatThanOpPreDouble(op, f);
+		return new GreatThanOpPreDouble(op, f);
 	}
 	else if (mid == "<=") {
-		pre = new LessThanOpPreDouble(op, f);
+		return new LessThanOpPreDouble(op, f);
 	}
 	else if (mid == "<") {
-		pre = new LessThanOpPreDouble(op, f);
+		return new LessThanOpPreDouble(op, f);
 	}
 	std::cout << "undefined expression";
 	throw "undefined expression";

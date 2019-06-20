@@ -199,3 +199,4 @@ Predicate * SpecParser::parseExpressionWithOperator(string expression) {
 	std::cout << "undefined expression";
 	throw "undefined expression";
 }
+

@@ -6,7 +6,7 @@ class BoolResult : public Result {
 private:
 	bool value = false;
 public:
-	BoolResult() {}
+	//BoolResult() {}
 
 	BoolResult(bool value) : value(value) {}
 
