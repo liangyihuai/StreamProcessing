@@ -33,8 +33,11 @@
 #define IDC_BUTTON2                     1033
 #define IDC_BUTTON3                     1034
 #define IDC_BUTTON4                     1035
+#define IDC_BUTTON_batch_rule_eventCapture 1035
 #define IDC_BUTTON5                     1036
+#define IDC_BUTTON_batch_import_cq_rules 1036
 #define IDC_BUTTON6                     1037
+#define IDC_BUTTON_batch_add_cep_rules  1037
 #define IDC_COMBOBOXEX1                 1038
 #define IDC_BUTTON_DISPLAY_ALL_RULE     1039
 #define IDC_BUTTON_SEARCH               1040
@@ -47,7 +50,6 @@
 #define IDC_BUTTON7                     1049
 #define IDC_BUTTON_RefeshRule           1049
 #define IDC_BUTTON_SHOW_MOVING_OBJ      1050
-#define IDC_EDIT4                       1053
 
 // Next default values for new objects
 // 

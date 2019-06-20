@@ -77,10 +77,18 @@ CStreamProcessingDlg::CStreamProcessingDlg(CWnd* pParent /*=nullptr*/)
 	, outputStreamForUpdate(_T("")){
 
 	//initialize name and value
-	event_filter_rule = _T("");
-	event_capture_rule = _T("");
-	cq_rule = _T("");
-	cep_rule = _T("");
+	event_filter_rule = _T("If not duplicate(id) & not unusual(speed)\
+		\r\nFrom rawData\
+		\r\nThen targetData");
+	event_capture_rule = _T("If target.iff = ally\
+		\r\nFrom targetData\
+		\r\nThen allytarget");
+	cq_rule = _T("If speed > 500 & elevation > 200\
+		\r\nFrom allytarget\
+		\r\nThen flyingAllyTarget");
+	cep_rule = _T("If exist(flyingAllyTarget)\
+		\r\nFrom flyingAllyTarget\
+		\r\nThen cepTarget1");
 
 	//launch a console
 	FILE* fp = NULL;

@@ -78,4 +78,7 @@ public:
 	afx_msg void OnBnClickedButton1();
 	afx_msg void OnBnClickedButtonRefeshrule();
 	afx_msg void OnBnClickedButtonShowMovingObj();
+	afx_msg void OnBnClickedButtonbatchruleeventcapture();
+	afx_msg void OnBnClickedButtonbatchimportcqrules();
+	afx_msg void OnBnClickedButtonbatchaddceprules();
 };

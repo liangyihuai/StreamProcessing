@@ -1,0 +1,27 @@
+//-------------------------------------------------------------
+/*CEP Response*/
+//-------------------------------------------------------------
+If exist(CommonBattleshipSituationThreat_Level1) & exist(BattleshipCountCommonThreat) & BattleshipCountCommonThreat.objectType == battleship & BattleshipCountCommonThreat.distance(127.5, 35.5) > 0.5
+From CommonBattleshipSituationThreat_Level1, BattleshipCountCommonThreat
+Window length=3000, sliding=1000
+Then ResponseEnemyBattleship1
+
+If exist(SevereBattleshipSituationThreat_Level2) & exist(BattleshipCountSevereThreat) & BattleshipCountSevereThreat.objectType == battleship & BattleshipCountSevereThreat.distance(127.5, 35.5) < 0.5
+From SevereBattleshipSituationThreat_Level2, BattleshipCountSevereThreat
+Window length=3000, sliding=1000
+Then ResponseEnemyBattleship2
+
+If exist(CommonAircraftSituationThreat_Level1) & exist(AircraftCountCommonThreat) & AircraftCountCommonThreat.objectType ==  aircraft & AircraftCountCommonThreat.distance(127.5, 35.5) > 0.5
+From CommonAircraftSituationThreat_Level1, AircraftCountCommonThreat
+Window length=3000, sliding=1000
+Then ResponseEnemyAircraft1
+
+If exist(SevereAircraftSituationThreat_Level2) & exist(AircraftCountSevereThreat) & AircraftCountSevereThreat.objectType ==  aircraft & AircraftCountSevereThreat.distance(127.5, 35.5) < 0.5
+From SevereAircraftSituationThreat_Level2, AircraftCountSevereThreat
+Window length=3000, sliding=1000
+Then ResponseEnemyAircraft2
+
+If exist(Severe_AircraftSubmarineBattleship_situationThreat_Level5)
+From Severe_AircraftSubmarineBattleship_situationThreat_Level5
+Window length=3000, sliding=1000
+Then ResponseEnemySevere_AircraftBattleshipSubmarine

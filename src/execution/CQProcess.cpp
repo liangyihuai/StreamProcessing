@@ -74,7 +74,7 @@ bool CQProcess::process(int timeSlice){
 						}
 					}
 
-					cout << "CQ[" << outputStreamName << "] " << *currEvent << endl;
+					cout <<endl << "CQ[" << outputStreamName << "] " << *currEvent << endl;
 					for (queue<EventPtr>* outputQueue : inputQueueSetOfDownstreamProcessUnit) {
 						outputQueue->push(currEvent);
 					}

@@ -31,6 +31,7 @@ public:
 		list<string>lines_list;
 		for (string line : lines) {
 			line = Utils::trim(line);
+			if (line.length() == 0) continue;
 			lines_list.push_back(line);
 		}
 		specLines_out = lines_list;

@@ -622,6 +622,10 @@
     <Text Include="src\spec_text\GUI1.txt">
       <Filter>Source Files\backend\spec_txt</Filter>
     </Text>
+    <Text Include="src\test\rule_test\EventFilterRules.txt" />
+    <Text Include="src\test\rule_test\EventCaptureRules.txt" />
+    <Text Include="src\test\rule_test\CQRules.txt" />
+    <Text Include="src\test\rule_test\CEPRules.txt" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="src\StreamProcessing.rc">

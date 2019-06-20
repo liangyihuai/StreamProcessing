@@ -1,0 +1,203 @@
+IF ElevationAngle>20 & speed>150 & elevation > 100
+FROM EnemyTarget
+THEN EnemyAircraft, objectType = aircraft
+
+IF ElevationAngle < 10 & elevation < 10 & elevation > -3 & Speed<50
+FROM EnemyTarget
+THEN EnemyBattleship, objectType = battleship
+
+IF elevation < -3 & speed < 50
+From EnemyTarget
+THEN EnemySubmarine, objectType = submarine
+
+IF ElevationAngle>20 & speed>150 & elevation > 100
+FROM AllyTarget
+THEN AllyAircraft, objectType = aircraft
+
+IF ElevationAngle < 10 & elevation < 10 & elevation > -3 & Speed<50
+FROM AllyTarget
+THEN AllyBattleship, objectType = battleship
+
+IF elevation < -3 & speed < 50
+From AllyTarget
+THEN AllySubmarine, objectType = submarine
+
+//------------------------------------------------------------------------------------------
+/*Threat level of each moving object, including severe threat, common threat and no threat.*/
+//------------------------------------------------------------------------------------------
+IF approaching(EnemyAircraft) = true & distance(127.8, 36.9) < 0.5 & speed > 150
+FROM EnemyAircraft
+THEN AircraftSevereThreat, threatLevel = severe
+
+IF hovering(EnemyAircraft) = true & distance(127.5, 35.5) > 0.5 & distance(127.5, 35.5) < 1
+From EnemyAircraft
+Then AircraftCommonThreat, threatLevel=common
+
+IF hovering(EnemyAircraft) = true & distance(127.5, 35.5) > 1
+From EnemyAircraft
+Then AircraftNoThreat, threatLevel=no
+
+
+IF hovering(EnemyBattleship) = true & distance(127.5, 35.5) > 0.5 & distance(127.5, 35.5) < 1
+From EnemyBattleship
+Then BattleshipCommonThreat, threatLevel=common
+
+IF approaching(EnemyBattleship) = true & distance(127.5, 35.5) < 0.5
+From EnemyBattleship
+Then BattleshipSevereThreat, threatLevel=severe
+
+IF hovering(EnemyBattleship) = true & distance(127.5, 35.5) > 1 
+From EnemyBattleship
+Then BattleshipNoThreat, threatLevel=no
+
+
+IF hovering(EnemySubmarine) = true & distance(127.5, 35.5) > 0.5 & distance(127.5, 35.5) < 1
+From EnemySubmarine
+Then SubmarineCommonThreat, threatLevel=common
+
+IF approaching(EnemySubmarine) = true & distance(127.5, 35.5) < 0.5
+From EnemySubmarine
+Then SubmarineSevereThreat, threatLevel=severe
+
+IF hovering(EnemySubmarine) = true & distance(127.5, 35.5) > 1 
+From EnemySubmarine
+Then SubmarineNoThreat, threatLevel=no
+
+//-------------------------------------------------------------
+/*Count by threat levels, which are severe threat, common threat, no threat.*/
+//-------------------------------------------------------------
+IF BattleshipSevereThreat.threatLevel = severe
+From BattleshipSevereThreat
+Window length = 1000, sliding=1000, distinct=objID
+Then BattleshipCountSevereThreat, Count()
+
+IF BattleshipCommonThreat.threatLevel = common
+From BattleshipCommonThreat
+Window length = 1000, sliding=1000, distinct=objID
+Then BattleshipCountCommonThreat, count()
+
+IF BattleshipNoThreat.threatLevel = no
+From BattleshipNoThreat
+Window length = 1000, sliding=1000, distinct=objID
+Then BattleshipCountNoThreat, count()
+
+IF AircraftSevereThreat.threatLevel = severe
+From AircraftSevereThreat
+Window length = 1000, sliding=1000, distinct=objID
+Then AircraftCountSevereThreat, Count()
+
+IF AircraftCommonThreat.threatLevel = common
+From AircraftCommonThreat
+Window length = 1000, sliding=1000, distinct=objID
+Then AircraftCountCommonThreat, Count()
+
+IF AircraftNoThreat.threatLevel = no
+From AircraftNoThreat
+Window length = 1000, sliding=1000, distinct=objID
+Then AircraftCountNoThreat, Count()
+
+IF SubmarineSevereThreat.threatLevel = severe
+From SubmarineSevereThreat
+Window length = 1000, sliding=1000, distinct=objID
+Then SubmarineCountSevereThreat, Count()
+
+IF SubmarineCommonThreat.threatLevel = common
+From SubmarineCommonThreat
+Window length = 1000, sliding=1000, distinct=objID
+Then SubmarineCountCommonThreat, Count()
+
+IF SubmarineNoThreat.threatLevel = no
+From SubmarineNoThreat
+Window length = 1000, sliding=1000, distinct=objID
+Then SubmarineCountNoThreat, Count()
+
+//-------------------------------------------------------------
+/*Threat situation detection.*/
+//-------------------------------------------------------------
+
+/*no threat for aircraft, battleship and submarine*/
+If AircraftCountNoThreat.count > 0 & BattleshipCountNoThreat.count>0 & SubmarineCountNoThreat.count>0
+From AircraftCountNoThreat, BattleshipCountNoThreat, SubmarineCountNoThreat
+Window length = 1000, sliding=1000
+Then NoThreat_AircraftSubmarineBattleship_situationThreat_Level0
+
+/*battleship*/
+If BattleshipCountNoThreat.count > 0
+From BattleshipCountNoThreat
+Then NoThreatBattleshipSituationThreat_Level0
+
+If BattleshipCountCommonThreat.count >= 3
+From BattleshipCountCommonThreat
+Then CommonBattleshipSituationThreat_Level1
+
+If BattleshipCountSevereThreat.count > 0
+From BattleshipCountSevereThreat
+Then SevereBattleshipSituationThreat_Level2
+
+/*aircraft*/
+If AircraftCountNoThreat.count > 0
+From AircraftCountNoThreat
+Then NoThreatAircraftSituationThreat_Level0
+
+If AircraftCountCommonThreat.count >= 3
+From AircraftCountCommonThreat
+Then CommonAircraftSituationThreat_Level1
+
+If AircraftCountSevereThreat.count > 0
+From AircraftCountSevereThreat
+Then SevereAircraftSituationThreat_Level2
+
+/*submarine*/
+If SubmarineCountNoThreat.count > 0
+From SubmarineCountNoThreat
+Then NoThreatSubmarineSituationthreat_Level0
+
+If SubmarineCountCommonThreat.count > 3
+From SubmarineCountCommonThreat
+Then CommonSubmarineSituationThreat_Level1
+
+If SubmarineCountSevereThreat.count > 0
+From SubmarineCountSevereThreat
+Then SevereSubmarineSituationThreat_Level2
+
+/*severe and common battleship*/
+If BattleshipCountCommonThreat.count > 2 & BattleshipCountSevereThreat.count > 0
+From BattleshipCountCommonThreat, BattleshipCountSevereThreat
+Window length = 1000, sliding=1000
+Then Severe_Common_battleshipSituationThreat_Level3
+
+/*severe and common aircraft*/
+If AircraftCountCommonThreat.count > 2 & AircraftCountSevereThreat.count > 0
+From AircraftCountCommonThreat, AircraftCountSevereThreat
+Window length = 1000, sliding=1000
+Then Severe_Common_aircraftSituationThreat_Level3
+
+/*severe and common submarine*/
+If SubmarineCountSevereThreat.count > 2 & SubmarineCountCommonThreat.count > 0
+From SubmarineCountSevereThreat,SubmarineCountCommonThreat
+Window length = 1000, sliding=1000
+Then Severe_common_submarineSituationThreat_Level3
+
+/*severe aircraft and common battleship*/
+If AircraftCountSevereThreat.count > 0 & BattleshipCountCommonThreat.count > 0
+From AircraftCountSevereThreat, BattleshipCountCommonThreat
+Window length = 1000, sliding=1000
+Then SevereAircraft_CommonBattleship_SituationThreat_Level4
+
+/*common aircraft and severe battleship*/
+If AircraftCountCommonThreat.count > 0 & BattleshipCountSevereThreat.count > 0
+From AircraftCountCommonThreat, BattleshipCountSevereThreat
+Window length = 1000, sliding=1000
+Then CommonAircraft_SevereBattleship_SituationThreat_Level4
+
+/*common aircraft and severe submarine*/
+If AircraftCountCommonThreat.count > 2 & SubmarineCountSevereThreat.count > 0
+From AircraftCountCommonThreat, SubmarineCountSevereThreat
+Window length = 1000, sliding=1000
+Then CommonAircraft_SevereSubmarine_situationThreat_Level4
+
+/*severe aircraft, severe battleship, severe submarine*/
+If AircraftCountSevereThreat.count > 0 & SubmarineCountSevereThreat.count > 0&BattleshipCountSevereThreat.count>0
+From AircraftCountCommonThreat, SubmarineCountSevereThreat, BattleshipCountSevereThreat
+Window length = 1000, sliding=1000
+Then Severe_AircraftSubmarineBattleship_situationThreat_Level5

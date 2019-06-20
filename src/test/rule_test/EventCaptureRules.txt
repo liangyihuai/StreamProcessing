@@ -1,0 +1,11 @@
+IF id > -1 & dir >= 0 & dir <= 360 & lon >= 0 & lon <= 180 & lat >= 0 & lat <= 180 &  ele > -10 & ele < 5000 & elevationAngle >= 0& elevationAngle <= 90 & speed>= 0 & speed < 5000
+FROM FilterEvent0
+THEN FilteredData
+
+If FilteredData.iff = unknown
+From FilteredData
+Then EnemyTarget
+
+If FilteredData.iff == ally
+From FilteredData
+Then AllyTarget

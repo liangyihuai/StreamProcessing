@@ -48,7 +48,7 @@ bool EventCapture::process(int timeSlice) {
 			std::cout << "[exception caught]\n";
 		}
 		if (condition.check(e)) {
-			//cout << "EC[" << outputStreamName << "] " << *e << endl;
+			cout <<endl << "EC[" << outputStreamName << "] " << *e << endl;
 			for (queue<EventPtr>* q : inputQueueSetOfDownstreamProcessUnit) {
 				q->push(e);
 			}
