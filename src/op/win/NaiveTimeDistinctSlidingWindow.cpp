@@ -11,7 +11,8 @@ NaiveTimeDistinctSlidingWindow::NaiveTimeDistinctSlidingWindow(int timeLen) {
 }
 
 //this constructor will call the first constructor
-NaiveTimeDistinctSlidingWindow::NaiveTimeDistinctSlidingWindow(int timeLen, string distinctField): NaiveTimeDistinctSlidingWindow(timeLen) {
+NaiveTimeDistinctSlidingWindow::NaiveTimeDistinctSlidingWindow(int timeLen, string distinctField)
+				: NaiveTimeDistinctSlidingWindow(timeLen) {
 	this->distinctField = distinctField;
 }
 

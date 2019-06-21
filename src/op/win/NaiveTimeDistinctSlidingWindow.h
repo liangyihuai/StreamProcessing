@@ -7,7 +7,7 @@
 class NaiveTimeDistinctSlidingWindow : public NaiveTimeSlidingWindow {
 public:
 	NaiveTimeDistinctSlidingWindow(int timeLen);
-	NaiveTimeDistinctSlidingWindow(int timeLen, string distinctField) :NaiveTimeDistinctSlidingWindow(timeLen);
+	NaiveTimeDistinctSlidingWindow(int timeLen, string distinctField);
 	~NaiveTimeDistinctSlidingWindow();
 
 	void refresh() override;
