@@ -102,14 +102,13 @@ void CQProcess::triggerResult() {
 	if (!ExecuteScheduler::cq_pq.empty()) {
 		try {
 			std::lock_guard<mutex> lg(ExecuteScheduler::mutexOfCQPriorityQueue);//mutex lock for variable "cq_pq".
-			//time to output result.
-			while (ExecuteScheduler::cq_pq.top()->triggerTime <= Utils::getTime()) {
-
+			while (ExecuteScheduler::cq_pq.top()->triggerTime <= Utils::getTime()) {//time to output result.
 				Process_TriggerTime* ptt = ExecuteScheduler::cq_pq.top();
 				CQProcess* currProcess = (CQProcess*)dynamic_cast<CQProcess*>(ptt->process);
 				//check whether it meets the output conditions
 				if (currProcess->inputQueues.size() > 1) {//if more than one input stream
 					bool meetQueryCondition = true;
+					//check query conditions of each input stream.
 					for (int i = 0; i < currProcess->predicates.size(); i++) {
 						bool checkResult = (!currProcess->windowList[i]->empty() 
 							&& currProcess->windowList[i]->checkAllEvents(*currProcess->predicates[i]));

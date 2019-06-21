@@ -17,8 +17,7 @@ bool NaiveTimeDistinctSlidingWindow::push_back(EventPtr e) {
 	if (eventArray[objId] == nullptr) {
 		eventArray[objId] = e;
 		this->event_size++;
-	}
-	else {
+	}else {
 		eventArray[objId] = e;
 	}
 
@@ -97,7 +96,22 @@ EventPtr NaiveTimeDistinctSlidingWindow::front() {
 }
 
 bool NaiveTimeDistinctSlidingWindow::empty() {
-	return event_size <= 0;
+	//debug----------start -------
+	int size = 0;
+	for (EventPtr e : eventArray) {
+		if (e != nullptr) size++;
+	}
+	if (size != this->event_size) {
+		cout << "wrong calculation of this->event_size" << endl;
+		throw "";
+	}
+	if (this->event_size < 0) {
+		cout << "this->event_size < 0" << endl;
+		throw "";
+	}
+	//------------------end----------
+
+	return event_size == 0;
 }
 
 bool NaiveTimeDistinctSlidingWindow::checkAllEvents(Predicate& pre) {
