@@ -4,21 +4,27 @@
 
 NaiveTimeDistinctSlidingWindow::NaiveTimeDistinctSlidingWindow(int timeLen) {
 	this->timeWinLen = timeLen;
+	this->distinctField = "objid";
 	for (int i = 0; i < Utils::movingObject_id_total_numble; i++) {
 		eventArray.push_back(nullptr);
 	}
 }
 
+//this constructor will call the first constructor
+NaiveTimeDistinctSlidingWindow::NaiveTimeDistinctSlidingWindow(int timeLen, string distinctField): NaiveTimeDistinctSlidingWindow(timeLen) {
+	this->distinctField = distinctField;
+}
+
 bool NaiveTimeDistinctSlidingWindow::push_back(EventPtr e) {
 	//get moving object ID
-	int objId = e->getInt("objid");
+	int index = getIndexByDistinctField(e);
 //	cout << endl << "Object ID: " << objId << endl;
 	
-	if (eventArray[objId] == nullptr) {
-		eventArray[objId] = e;
+	if (eventArray[index] == nullptr) {
+		eventArray[index] = e;
 		this->event_size++;
 	}else {
-		eventArray[objId] = e;
+		eventArray[index] = e;
 	}
 
 	return true;
@@ -126,6 +132,14 @@ bool NaiveTimeDistinctSlidingWindow::checkAllEvents(Predicate& pre) {
 
 void NaiveTimeDistinctSlidingWindow::setDistinctField(string distinctField) {
 	this->distinctField = distinctField;
+}
+
+int NaiveTimeDistinctSlidingWindow::getIndexByDistinctField(EventPtr e) {
+	if (this->distinctField.length() == 0) {
+		cout << "distinct field is empty." << endl;
+		throw "";
+	}
+	return e->getInt(this->distinctField);
 }
 
 NaiveTimeDistinctSlidingWindow::~NaiveTimeDistinctSlidingWindow() {
