@@ -10,7 +10,7 @@ ApproachingOP::ApproachingOP(int min_step, float min_speed, float lon, float lat
 	this->lat = lat;
 
 	for (int i = 0; i < Utils::movingObject_id_total_numble; i++) {
-		historySteps.push_back(0);
+		forwardSteps.push_back(new list<bool>());
 		lon_previous_steps.push_back(-1);
 		lat_previous_steps.push_back(-1);
 	}
@@ -18,13 +18,12 @@ ApproachingOP::ApproachingOP(int min_step, float min_speed, float lon, float lat
 
 bool ApproachingOP::moving_forwards(EventPtr event) {
 	int objectId = event->getInt("objid");
-
-	if (historySteps[objectId] == 0) {
-		return false;
-	}
+	  
+	if (lon_previous_steps[objectId] < 0) return false;
 
 	float previous_lon = lon_previous_steps[objectId];
 	float previous_lat = lat_previous_steps[objectId];
+
 	float curr_lon = event->getFloat("lon");
 	float curr_lat = event->getFloat("lat");
 
@@ -36,26 +35,48 @@ bool ApproachingOP::moving_forwards(EventPtr event) {
 
 ResultPtr ApproachingOP::result(EventPtr event) {
 	int objectId = event->getInt("objid");
-	int processedStep = historySteps[objectId];
+
+	lon = event->getFloat("lon");
+	lat = event->getFloat("lat");
 
 	if (event->getFloat("speed") < minSpeed) {
-		historySteps[objectId] = 0;
-		return ResultPtr(new BoolResult(false));
-	}else if (historySteps[objectId] == 0 && event->getFloat("speed") >= minSpeed) {
-		lon_previous_steps[objectId] = event->getFloat("lon");
-		lat_previous_steps[objectId] = event->getFloat("lat");
-		historySteps[objectId]++; 
+		this->forwardSteps[objectId]->push_back(false);
+		lon_previous_steps[objectId] = lon;
+		lat_previous_steps[objectId] = lat;
+
 		return ResultPtr(new BoolResult(false));
 	}else if (moving_forwards(event)) {
 		lon_previous_steps[objectId] = event->getFloat("lon");
 		lat_previous_steps[objectId] = event->getFloat("lat");
-		historySteps[objectId]++;
-		if (historySteps[objectId] < minStep) {
-			return ResultPtr(new BoolResult(false));
-		}else {
+		
+		forwardSteps[objectId]->push_back(true);
+
+		while (forwardSteps[objectId]->size() > minStep) {
+			forwardSteps[objectId]->pop_front();
+		}
+
+		bool result = true;
+		for (bool b : *forwardSteps[objectId]) {
+			if (!b) result = false;
+			break;
+		}
+		if (result == true && forwardSteps[objectId]->size() >= minStep) {
 			return ResultPtr(new BoolResult(true));
 		}
+		else {
+			return ResultPtr(new BoolResult(false));
+		}
+		
 	}else {//not move forwards to the target location.
+		if (lon_previous_steps[objectId] > 0) {//not the first step
+			this->forwardSteps[objectId]->push_back(false);
+		}
+		else {
+			this->forwardSteps[objectId]->push_back(true);
+		}
+		lon_previous_steps[objectId] = lon;
+		lat_previous_steps[objectId] = lat;
+		
 		return ResultPtr(new BoolResult(false));
 	}
 }

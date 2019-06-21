@@ -253,6 +253,7 @@
     <ClInclude Include="src\op\Count.h" />
     <ClInclude Include="src\test\rule_test\DataSample1.h" />
     <ClInclude Include="src\test\rule_test\RuleSpec.h" />
+    <ClInclude Include="src\test\rule_test\RuleSpecForSampleData1.h" />
     <ClInclude Include="src\test\rule_test\SampleEventGenerator.h" />
     <ClInclude Include="src\util\CQIndexUtils.h" />
     <ClInclude Include="src\execution\CQProcess.h" />

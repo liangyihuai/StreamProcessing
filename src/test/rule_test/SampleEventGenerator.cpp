@@ -56,6 +56,12 @@ vector<EventPtr> SampleEventGenerator::generateSampleEvent1() {
 
 			e->addAttr("lon", newLon);
 			e->addAttr("lat", newLat);
+
+			e->addAttr("elevationangle", (float)Utils::randomFloat(40, 90));
+
+			float ele = (float)Utils::randomFloat(100, 1000);
+			e->addAttr("elevation", ele);
+			e->addAttr("ele", ele);
 		}else {
 			/*speed*/
 			e->addAttr("speed", (float)Utils::randomFloat(3, 29));
@@ -103,11 +109,16 @@ vector<EventPtr> SampleEventGenerator::generateSampleEvent1() {
 					}
 				} while (newLon < min_lon_other_obj || newLon > max_lon_other_obj
 					|| newLat < min_lat_other_obj || newLat > max_lat_other_obj);
-				
 			}
 
 			e->addAttr("lon", newLon);
 			e->addAttr("lat", newLat);
+
+			e->addAttr("elevationangle", (float)Utils::randomFloat(0, 9));
+
+			float ele = (float)Utils::randomFloat(-3, 10);
+			e->addAttr("elevation", ele);
+			e->addAttr("ele", ele);
 		}
 
 		if (Utils::movingObject_id_count >= Utils::movingObject_id_total_numble) {
@@ -115,22 +126,15 @@ vector<EventPtr> SampleEventGenerator::generateSampleEvent1() {
 		}
 
 		e->addAttr("iff", "unknown");
-		e->addAttr("elevationAngle", (float)Utils::randomFloat(0, 90));
-
-
+		
 		e->addAttr("dir", (float)Utils::randomFloat(0, 360));
-		float ele = (float)Utils::randomFloat(-300, 10000);
-		e->addAttr("elevation", ele);
-		e->addAttr("ele", ele);
-
+		
 		if (Utils::id % 2 == 0) {
 			e->addAttr("communicationsetup", true);
 		}
 		else {
 			e->addAttr("communicationsetup", false);
 		}
-
-		e->addAttr("elevationangle", (float)Utils::randomFloat(0, 360));
 
 		EventPtr event(e);
 		result.push_back(event);

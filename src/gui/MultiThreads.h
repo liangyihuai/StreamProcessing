@@ -38,3 +38,10 @@ public:
 };
 
 
+class ThreadOfInputDataForSampleData1 {
+public:
+	void run();
+
+	std::thread runThread();
+};
+

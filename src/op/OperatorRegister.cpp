@@ -68,10 +68,10 @@ Operator * OperatorRegister::getInstance(string opName, vector<string> params) {
 		return new ExistOp(params[0]);
 	}
 	else if ("approaching" == opName) {
-		return new ApproachingOP(3, 30, 127.5, 35.5);//min_step, min_speed, longitude, latitude
+		return new ApproachingOP(4, 2, 127.5, 35.5);//min_step, min_speed, longitude, latitude
 	}
 	else if ("hovering" == opName) {
-		return new HoveringOp(127.5, 35.5, 30, 3000);//targetLon, targetLat, minSpeed, windowLen
+		return new HoveringOp(127.5, 35.5, 30, 4000);//targetLon, targetLat, minSpeed, windowLen
 	}else {
 		std::cout << "The operator " << opName << " is not defined."<< endl;
 		throw "";

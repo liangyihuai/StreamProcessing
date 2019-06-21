@@ -73,7 +73,7 @@ public:
 		CEPProcess* cep = cepSpec->instance();
 		ProcessRegister::addProcess(cep);
 		//store rule specifications
-		SpecRegister::register_cep_rule(cepSpec->getOutputStreamName(), ruleSpec);
+  		SpecRegister::register_cep_rule(cepSpec->getOutputStreamName(), ruleSpec);
 	}
 
 };

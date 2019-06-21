@@ -205,3 +205,24 @@ void Utils::deleteAllMark(string &s, const string &mark) {
 }
 
 
+//Transform sample data to EventPtrs.
+vector<EventPtr> Utils::tranform(string str) {
+	vector<EventPtr> result;
+	vector<string> lines = Utils::split(str, "\n");
+	for (string line : lines) {
+		if (line.find(",") == -1) continue;
+		vector<string> pieces = Utils::split(line, ",");
+		string id_str = Utils::split(pieces[0], ":")[1];
+		stringstream ss;
+		int id = 0;
+		ss << id_str;
+		ss >> id;
+		Event* e = new Event(id, Utils::getTime());
+		for (int i = 2; i < pieces.size(); i++) {
+			vector<string> key_value = Utils::split(pieces[i], ":");
+			e->addAttr(key_value[0], key_value[1]);
+		}
+		result.push_back(EventPtr(e));
+	}
+	return result;
+}

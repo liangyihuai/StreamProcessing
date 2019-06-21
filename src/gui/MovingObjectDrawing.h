@@ -26,7 +26,7 @@ public:
 	CPoint scale(float x, float y);
 
 	//Transform sample data to EventPtrs.
-	vector<EventPtr> tranform(string str);
+	//vector<EventPtr> tranform(string str);
 
 	void drawText(CDC *pDC, CPoint& p, string str, int x_offset=0, int y_offset=0);
 

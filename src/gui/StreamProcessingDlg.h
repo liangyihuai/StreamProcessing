@@ -81,4 +81,5 @@ public:
 	afx_msg void OnBnClickedButtonbatchruleeventcapture();
 	afx_msg void OnBnClickedButtonbatchimportcqrules();
 	afx_msg void OnBnClickedButtonbatchaddceprules();
+	afx_msg void OnBnClickedButtonProcessSampleData1();
 };

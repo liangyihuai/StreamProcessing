@@ -83,6 +83,8 @@ public:
 		const string skipEnd);
 
     static void deleteAllMark(string &s, const string &mark);
+
+	static vector<EventPtr> tranform(string str);
 };
 
 #endif //CONTINUOUSPROCESSING_UTILS_H

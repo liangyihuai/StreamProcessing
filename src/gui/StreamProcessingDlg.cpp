@@ -22,6 +22,7 @@
 #include "../test/rule_test/DataSample1.h"
 #include "../test/rule_test/SampleEventGenerator.h"
 #include <fstream>
+#include "../test/rule_test/RuleSpecForSampleData1.h"
 
 
 //#include "../test/performanceTest/DataSample1.h"
@@ -77,10 +78,21 @@ CStreamProcessingDlg::CStreamProcessingDlg(CWnd* pParent /*=nullptr*/)
 	, outputStreamForUpdate(_T("")){
 
 	//initialize name and value
-	event_filter_rule = _T("");
-	event_capture_rule = _T("");
-	cq_rule = _T("");
-	cep_rule = _T("");
+	event_filter_rule = _T("If not duplicate(id) & not unusual(speed)\
+		\r\nFrom rawData\
+		\r\nThen targetData\
+		");
+
+	event_capture_rule = _T("If target.iff = ally\
+		\r\nFrom targetData\
+		\r\nThen allytarget");
+	cq_rule = _T("If speed > 500 & elevation > 200\
+		\r\nFrom allytarget\
+		\r\nThen flyingAllyTarget");
+	cep_rule = _T("If exist(flyingAllyTarget)\
+		\r\nFrom flyingAllyTarget\
+		\r\nWindow length = 3000, sliding = 1000\
+		\r\nThen cepTarget1");
 
 	//launch a console
 	FILE* fp = NULL;
@@ -132,6 +144,7 @@ BEGIN_MESSAGE_MAP(CStreamProcessingDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_BUTTON_batch_rule_eventCapture, &CStreamProcessingDlg::OnBnClickedButtonbatchruleeventcapture)
 	ON_BN_CLICKED(IDC_BUTTON_batch_import_cq_rules, &CStreamProcessingDlg::OnBnClickedButtonbatchimportcqrules)
 	ON_BN_CLICKED(IDC_BUTTON_batch_add_cep_rules, &CStreamProcessingDlg::OnBnClickedButtonbatchaddceprules)
+	ON_BN_CLICKED(IDC_BUTTON_PROCESS_SAMPLE_DATA1, &CStreamProcessingDlg::OnBnClickedButtonProcessSampleData1)
 END_MESSAGE_MAP()
 
 
@@ -187,15 +200,15 @@ void CStreamProcessingDlg::OnPaint(){
 
 	
 	if (this->startToDrawSampleData1) {
-	/*	SampleEventGenerator sampleGenerator;
+		SampleEventGenerator sampleGenerator;
 		vector<EventPtr> events = sampleGenerator.generateSampleEvent1();
 		stringstream ss;
 		for (EventPtr e : events) {
 			ss << e->toString() << "\n";
 			cout << "" << *e << "\\n\\" << endl;
 		}
-		string sample = ss.str();*/
-		MovingObjDrawing drawing(this, sample1);
+		string sample = ss.str();
+		MovingObjDrawing drawing(this, sample);
 		drawing.doDraw();
 	}
 
@@ -260,7 +273,7 @@ void CStreamProcessingDlg::OnBnClickedButtonCaptureAdd(){
 
 	MessageBox(_T("Add Event Capture rule successfully"), NULL, MB_OK);
 
-	event_capture_rule = _T("");
+	//event_capture_rule = _T("");
 	UpdateData(false);
 }
 
@@ -280,7 +293,7 @@ void CStreamProcessingDlg::OnBnClickedButtonCqAdd()
 	RuleRegisterUtils::registerCQ(ruleStrs);
 
 	MessageBox(_T("Add CQ rule successfully"), NULL, MB_OK);
-	cq_rule = _T("");
+	//cq_rule = _T("");
 	UpdateData(false);
 }
 
@@ -301,7 +314,7 @@ void CStreamProcessingDlg::OnBnClickedButtonCepAdd()
 	RuleRegisterUtils::registerCEP(ruleStrs);
 
 	MessageBox(_T("Add CEP rule successfully"), NULL, MB_OK);
-	cep_rule = _T("");
+	//cep_rule = _T("");
 	UpdateData(false);
 }
 
@@ -385,10 +398,9 @@ void CStreamProcessingDlg::OnBnClickedButtonDisplayAllRule(){
 	for (; iter != allSpecs.end(); iter++) {
 		string outputStreamName = *iter;
 		iter++;
+		ss << "1. Output Stream Name: " << outputStreamName << "\r\n";
 		string rule = *iter;
-		ss << rule << "\r\n\r\n" 
-			<< "output stream: " <<outputStreamName 
-			<< "\r\n--------------------------------\r\n";
+		ss << "2. Rule Spec: " << "\r\n" << rule << "\r\n\r\n";
 	}
 	CString cRules(ss.str().c_str());
 	editBoxOfRule = cRules;
@@ -502,7 +514,7 @@ void CStreamProcessingDlg::OnBnClickedButtonShowMovingObj(){
 void CStreamProcessingDlg::OnBnClickedButton1() {//choose a rule file for "batch add".
 	CString strFile = _T("");
 
-	CFileDialog    dlgFile(TRUE, NULL, NULL, OFN_HIDEREADONLY, _T("Describe Files (*.txt)|*.txt|All Files (*.*)|*.*||"), NULL);
+	CFileDialog dlgFile(TRUE, NULL, NULL, OFN_HIDEREADONLY, _T("Describe Files (*.txt)|*.txt|All Files (*.*)|*.*||"), NULL);
 
 	if (dlgFile.DoModal()) {
 		strFile = dlgFile.GetPathName();
@@ -511,7 +523,10 @@ void CStreamProcessingDlg::OnBnClickedButton1() {//choose a rule file for "batch
 		for (string ruleStr : ruleStrs) {
 			RuleRegisterUtils::registerEventFilter(ruleStr);
 		}
-		MessageBox(_T("Add Event Filter rule successfully"), NULL, MB_OK);
+		if (ruleStrs.size() > 0) {
+			MessageBox(_T("Add Event Filter rule successfully"), NULL, MB_OK);
+		}
+		
 	}
 }
 
@@ -521,7 +536,7 @@ void CStreamProcessingDlg::OnBnClickedButtonbatchruleeventcapture()
 
 	CString strFile = _T("");
 
-	CFileDialog    dlgFile(TRUE, NULL, NULL, OFN_HIDEREADONLY, _T("Describe Files (*.txt)|*.txt|All Files (*.*)|*.*||"), NULL);
+	CFileDialog dlgFile(TRUE, NULL, NULL, OFN_HIDEREADONLY, _T("Describe Files (*.txt)|*.txt|All Files (*.*)|*.*||"), NULL);
 
 	if (dlgFile.DoModal()) {
 		strFile = dlgFile.GetPathName();
@@ -530,7 +545,8 @@ void CStreamProcessingDlg::OnBnClickedButtonbatchruleeventcapture()
 		for (string ruleStr : ruleStrs) {
 			RuleRegisterUtils::registerEventCapture(ruleStr);
 		}
-		MessageBox(_T("Add Event Capture rule successfully"), NULL, MB_OK);
+		if (ruleStrs.size() > 0)
+			MessageBox(_T("Add Event Capture rule successfully"), NULL, MB_OK);
 	}
 }
 
@@ -540,7 +556,7 @@ void CStreamProcessingDlg::OnBnClickedButtonbatchimportcqrules()
 	// TODO: Add your control notification handler code here
 	CString strFile = _T("");
 
-	CFileDialog  dlgFile(TRUE, NULL, NULL, OFN_HIDEREADONLY, _T("Describe Files (*.txt)|*.txt|All Files (*.*)|*.*||"), NULL);
+	CFileDialog dlgFile(TRUE, NULL, NULL, OFN_HIDEREADONLY, _T("Describe Files (*.txt)|*.txt|All Files (*.*)|*.*||"), NULL);
 
 	if (dlgFile.DoModal()) {
 		strFile = dlgFile.GetPathName();
@@ -549,7 +565,8 @@ void CStreamProcessingDlg::OnBnClickedButtonbatchimportcqrules()
 		for (string ruleStr : ruleStrs) {
 			RuleRegisterUtils::registerCQ(ruleStr);
 		}
-		MessageBox(_T("Add CQ rule successfully"), NULL, MB_OK);
+		if (ruleStrs.size() > 0)
+			MessageBox(_T("Add CQ rule successfully"), NULL, MB_OK);
 	}
 }
 
@@ -559,7 +576,7 @@ void CStreamProcessingDlg::OnBnClickedButtonbatchaddceprules()
 	// TODO: Add your control notification handler code here
 	CString strFile = _T("");
 
-	CFileDialog    dlgFile(TRUE, NULL, NULL, OFN_HIDEREADONLY, _T("Describe Files (*.txt)|*.txt|All Files (*.*)|*.*||"), NULL);
+	CFileDialog dlgFile(TRUE, NULL, NULL, OFN_HIDEREADONLY, _T("Describe Files (*.txt)|*.txt|All Files (*.*)|*.*||"), NULL);
 
 	if (dlgFile.DoModal()) {
 		strFile = dlgFile.GetPathName();
@@ -568,6 +585,33 @@ void CStreamProcessingDlg::OnBnClickedButtonbatchaddceprules()
 		for (string ruleStr : ruleStrs) {
 			RuleRegisterUtils::registerCEP(ruleStr);
 		}
-		MessageBox(_T("Add CEP rule successfully"), NULL, MB_OK);
+		if (ruleStrs.size() > 0)
+			MessageBox(_T("Add CEP rule successfully"), NULL, MB_OK);
 	}
+}
+
+
+void CStreamProcessingDlg::OnBnClickedButtonProcessSampleData1(){
+	RuleSpecForSampleData1 rule;
+	//register rules
+	RuleRegisterUtils::registerEventFilter(rule.event_filter_rule);
+	RuleRegisterUtils::registerEventCapture(rule.ec_enemy_target);
+	RuleRegisterUtils::registerEventCapture(rule.ec_enemy_aircraft);
+	RuleRegisterUtils::registerEventCapture(rule.ec_enemy_battleship);
+	RuleRegisterUtils::registerCQ(rule.cq_enemy_approaching_aircraft_severe);
+	RuleRegisterUtils::registerCQ(rule.cq_enemy_battleship_hovering_common);
+	RuleRegisterUtils::registerCQ(rule.cq_count_severe_threat_aircraft);
+	RuleRegisterUtils::registerCQ(rule.cq_count_common_threat_battleshp);
+	RuleRegisterUtils::registerCQ(rule.cq_situation_servereAircraft_commonBattleship);
+	RuleRegisterUtils::registerCEP(rule.cep_response_enemy_severe_aircraft_commomBattleship);
+
+	ExecuteScheduler::initialize();
+
+	//new threat to input data
+	ThreadOfInputDataForSampleData1 * inputDataThreat = new ThreadOfInputDataForSampleData1();
+	inputDataThreat->runThread().detach();
+
+	//thread for EventCapture, CQ and CEP.
+	ThreadOfProcessUnit * threadOfProcessUnit = new ThreadOfProcessUnit();
+	threadOfProcessUnit->runThread().detach();
 }

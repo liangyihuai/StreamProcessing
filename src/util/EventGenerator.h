@@ -17,14 +17,14 @@ public:
 			Utils::movingObject_id_count = 0;
 		}
 
-		e->addAttr("iff", "unknown");
+		//e->addAttr("iff", "unknown");
 
-		/*if (((int)Utils::randomFloat(0, 1000)) % 2 == 0) {
+		if (((int)Utils::randomFloat(0, 1000)) % 2 == 0) {
 			e->addAttr("iff", "ally");
 		}
 		else {
 			e->addAttr("iff", "unknown");
-		}*/
+		}
 		e->addAttr("elevationAngle", (float)Utils::randomFloat(0, 90));
 		e->addAttr("speed", (float)Utils::randomFloat(-10, 800));
 		e->addAttr("lon", (float)Utils::randomFloat(127, 129));

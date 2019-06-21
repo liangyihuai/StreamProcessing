@@ -6,13 +6,15 @@
 /*
 1. observing step >= minStep
 2. current speec > minSpeed
-3. the moving object is moving forwards.
+3. the moving object is moving forwards within the latest minStep.
 */
 class ApproachingOP : public Operator {
 private:
-	vector<int> historySteps;//the step has been processed for each moving object.
+
 	vector<float> lon_previous_steps;
 	vector<float> lat_previous_steps;
+
+	vector<list<bool>*> forwardSteps;
 
 	/*Configuration fields*/
 	int minStep;

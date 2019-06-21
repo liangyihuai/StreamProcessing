@@ -3,7 +3,7 @@
 #include "MovingObjectDrawing.h"
 
 MovingObjDrawing::MovingObjDrawing(CStreamProcessingDlg* dlg, string sample) {
-	vector<EventPtr> es = tranform(sample);
+	vector<EventPtr> es = Utils::tranform(sample);
 	//int size = ((int)(es.size() / moving_obj_size)) * moving_obj_size;
 	//get minimum and maximum moving object ids
 	int min = 999999;
@@ -73,6 +73,7 @@ void MovingObjDrawing::drawRectangle(CDC *pDC) {
 	DrawLine(pDC, CPoint(x_length, 0), CPoint(x_length, y_length));
 }
 
+
 void MovingObjDrawing::DrawLine(CDC *pDC, const CPoint &relativePoint1, const CPoint &relativePoint2) {
 	CPen *oldPen = pDC->SelectObject(&m_pen);//±£¥ÊDC‘≠ ºª≠± 
 
@@ -115,27 +116,6 @@ CPoint MovingObjDrawing::scale(float x, float y) {
 	return CPoint(scale_x, scale_y);
 }
 
-//Transform sample data to EventPtrs.
-vector<EventPtr> MovingObjDrawing::tranform(string str) {
-	vector<EventPtr> result;
-	vector<string> lines = Utils::split(str, "\n");
-	for (string line : lines) {
-		if (line.find(",") == -1) continue;
-		vector<string> pieces = Utils::split(line, ",");
-		string id_str = Utils::split(pieces[0], ":")[1];
-		stringstream ss;
-		int id = 0;
-		ss << id_str;
-		ss >> id;
-		Event* e = new Event(id, Utils::getTime());
-		for (int i = 2; i < pieces.size(); i++) {
-			vector<string> key_value = Utils::split(pieces[i], ":");
-			e->addAttr(key_value[0], key_value[1]);
-		}
-		result.push_back(EventPtr(e));
-	}
-	return result;
-}
 
 void MovingObjDrawing::drawText(CDC *pDC, CPoint& p, string str, int x_offset, int y_offset) {
 	int x = p.x + min_x + x_offset;

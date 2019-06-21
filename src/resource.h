@@ -50,6 +50,8 @@
 #define IDC_BUTTON7                     1049
 #define IDC_BUTTON_RefeshRule           1049
 #define IDC_BUTTON_SHOW_MOVING_OBJ      1050
+#define IDC_BUTTON8                     1054
+#define IDC_BUTTON_PROCESS_SAMPLE_DATA1 1054
 
 // Next default values for new objects
 // 
@@ -57,7 +59,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        138
 #define _APS_NEXT_COMMAND_VALUE         32771
-#define _APS_NEXT_CONTROL_VALUE         1054
+#define _APS_NEXT_CONTROL_VALUE         1055
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

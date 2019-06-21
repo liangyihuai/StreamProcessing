@@ -10,21 +10,18 @@ NaiveTimeDistinctSlidingWindow::NaiveTimeDistinctSlidingWindow(int timeLen) {
 }
 
 bool NaiveTimeDistinctSlidingWindow::push_back(EventPtr e) {
-	if (eventQueue.size() > MAX_WINDOW_SIZE) {
-		std::cout << "the window is full. operator name: ExistOP, stream name: ";
-		return false;
-	}
-
-	if (e == nullptr) {
-		throw "the parameter is empty.";
-	}
-
 	//get moving object ID
 	int objId = e->getInt("objid");
 //	cout << endl << "Object ID: " << objId << endl;
-	eventArray[objId] = e;
+	
+	if (eventArray[objId] == nullptr) {
+		eventArray[objId] = e;
+		this->event_size++;
+	}
+	else {
+		eventArray[objId] = e;
+	}
 
-	this->event_size++;
 	return true;
 }
 
@@ -33,7 +30,7 @@ void NaiveTimeDistinctSlidingWindow::refresh() {
 	EventPtr e;
 
 	for (int i = 0; i < eventArray.size(); i++) {
-		if (eventArray[i] != nullptr && eventArray[i]->getTime() + timeWinLen < curr) {
+		if (eventArray[i] != nullptr && (eventArray[i]->getTime() + timeWinLen) < curr) {
 			eventArray[i] = nullptr;
 			this->event_size--;
 		}
@@ -84,7 +81,7 @@ void NaiveTimeDistinctSlidingWindow::reevaluate(bool& result) {
 }
 
 EventPtr NaiveTimeDistinctSlidingWindow::front() {
-	long long maxTime = 0;
+	long long maxTime = -1;
 	int maxIndex = -1;
 	for (int i = 0; i < eventArray.size(); i++) {
 		EventPtr e = eventArray[i];

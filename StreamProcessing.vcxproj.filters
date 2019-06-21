@@ -357,6 +357,9 @@
     <ClInclude Include="src\test\rule_test\SampleEventGenerator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\test\rule_test\RuleSpecForSampleData1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\common\Event.cpp">
